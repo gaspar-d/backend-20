@@ -20,11 +20,16 @@ export class UserController {
 			const input = {
 				name: req.body.name,
 				email: req.body.email,
+				nickname: req.body.nickname,
 				password: req.body.password,
-				role: req.body.role,
 			};
 
-			if (!input.name || !input.email || !input.password || !input.role) {
+			if (
+				!input.name ||
+				!input.email ||
+				!input.nickname ||
+				!input.password
+			) {
 				throw new InvalidInputError("Missing data");
 			}
 
@@ -32,8 +37,7 @@ export class UserController {
 
 			const authorizer = new Authorizer();
 			const token = authorizer.generateToken({
-				userId: user.getId(),
-				userRole: user.getRole(),
+				userId: user.getId()
 			});
 
 			res.status(200).send({ token });
@@ -67,7 +71,6 @@ export class UserController {
 			const authorizer = new Authorizer();
 			const token = authorizer.generateToken({
 				userId: user.getId(),
-				userRole: user.getRole(),
 			});
 
 			res.status(200).send({ token });

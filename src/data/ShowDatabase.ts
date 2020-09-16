@@ -1,5 +1,5 @@
 import { BaseDatabase } from "./base/BaseDatabase";
-import { Show, WeekDay } from "../model/Show";
+import { Show, WeekDay } from "../model/Images";
 import { GetShowsByDayBusinessOutputItem } from "../business/getShowsByDayBusiness";
 
 export class ShowDatabase extends BaseDatabase {

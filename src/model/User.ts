@@ -3,8 +3,8 @@ export class User {
 		private id: string,
 		private name: string,
 		private email: string,
-		private password: string,
-		private role: UserRole
+		private nickname: string,
+		private password: string
 	) {}
 
 	public getId(): string {
@@ -16,11 +16,11 @@ export class User {
 	public getEmail(): string {
 		return this.email;
 	}
+	public getNickNAme(): string {
+		return this.nickname;
+	}
 	public getPassword(): string {
 		return this.password;
-	}
-	public getRole(): UserRole {
-		return this.role;
 	}
 
 	public static toUser(data?: any): User | undefined {
@@ -30,26 +30,9 @@ export class User {
 				data.id,
 				data.name,
 				data.email,
-				data.password,
-				User.toUserRole(data.role)
+				data.nickname,
+				data.password
 			)
 		);
 	}
-
-	public static toUserRole(data?: string): UserRole {
-		switch (data) {
-			case "NORMAL":
-				return UserRole.NORMAL;
-			case "ADMIN":
-				return UserRole.ADMIN;
-
-			default:
-				throw new Error("Invalid User Role");
-		}
-	}
-}
-
-export enum UserRole {
-	NORMAL = "NORMAL",
-	ADMIN = "ADMIN",
 }
