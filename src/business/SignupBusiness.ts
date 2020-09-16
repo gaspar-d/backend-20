@@ -28,6 +28,6 @@ export class SignupBusiness {
 export interface SignupBusinessInput {
 	name: string;
 	email: string;
+	nickname: string;
 	password: string;
-	role: string;
 }

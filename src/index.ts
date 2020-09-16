@@ -2,9 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 
 import userRouter from "./router/User";
-import bandRouter from "./router/Band";
 import cors from "cors";
-import showRouter from "./router/Show";
+import showRouter from "./router/Images";
 
 import { AddressInfo } from "net";
 
@@ -15,8 +14,7 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 
 app.use("/users/", userRouter);
-app.use("/bands/", bandRouter);
-app.use("/shows/", showRouter);
+app.use("/images/", showRouter);
 
 /* Server Rodando  */
 

@@ -1,4 +1,4 @@
-import { User, UserRole } from "../model/User";
+import { User } from "../model/User";
 import * as jwt from "jsonwebtoken";
 import { SetupError } from "../error/SetupError";
 
@@ -13,11 +13,10 @@ export class Authorizer {
 		return process.env.JWT_KEY;
 	}
 
-	public retrieveDataFormToken(token: string): TokenData {
+	public retrieveDataFromToken(token: string): TokenData {
 		const data = jwt.verify(token, this.secretKey()) as any;
 		return {
 			userId: data.userId,
-			userRole: User.toUserRole(data.userRole),
 		};
 	}
 
@@ -28,5 +27,4 @@ export class Authorizer {
 
 export interface TokenData {
 	userId: string;
-	userRole: UserRole;
 }

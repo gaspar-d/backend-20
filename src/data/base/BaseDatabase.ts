@@ -3,9 +3,8 @@ import knex from "knex";
 
 export abstract class BaseDatabase {
 	protected tableNames = {
-		bands: "LamaBands",
-		shows: "LamaShows",
-		users: "LamaUsers",
+		images: "PIC_LAB_IMAGES",
+		users: "PIC_LAB_USERS",
 	};
 
 	private validateSetupData() {
